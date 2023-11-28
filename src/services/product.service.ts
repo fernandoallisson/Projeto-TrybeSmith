@@ -12,4 +12,13 @@ const create = async (product: Omit<Product, 'id'>): Promise<ProductSequelizeMod
   return newProduct;
 };
 
-export default { create };
+const getAll = async (): Promise<ProductSequelizeModel[]> => {
+  const products = await ProductModel.findAll();
+  if (!products) {
+    throw new Error('Error getting products');
+  }
+
+  return products;
+};
+
+export default { create, getAll };

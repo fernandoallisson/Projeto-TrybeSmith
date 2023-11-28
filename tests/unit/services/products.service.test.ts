@@ -16,7 +16,7 @@ describe('ProductsService', function () {
       id: 1,
     };
 
-    const newProduct = await ProductModel.create(product);
+    const newProduct = await ProductModel.build(product);
     sinon.stub(ProductsService, 'create').resolves(newProduct);
 
 
