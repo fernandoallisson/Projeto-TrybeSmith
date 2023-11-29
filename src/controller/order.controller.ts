@@ -6,4 +6,8 @@ const getAllOrders = async (_req: Request, res: Response): Promise<Response | vo
   res.status(200).json(orders);
 };
 
-export default { getAllOrders };
+const createOrders = async (req: Request, res: Response): Promise<Response | void> => {
+  const newOrder = await orderService.createOrder(req.body);
+  res.status(201).json(newOrder.data);
+};
+export default { getAllOrders, createOrders };

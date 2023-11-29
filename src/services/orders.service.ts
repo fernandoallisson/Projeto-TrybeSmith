@@ -2,9 +2,19 @@ import OrderModel from '../database/models/order.model';
 import ProductModel from '../database/models/product.model';
 
 export interface OrderData {
-  id: number;
-  userId: number;
+  id?: number;
+  userId?: number;
   productIds?: number[];
+}
+
+export interface OrderProductData {
+  productIds: number[];
+  userId: number;
+}
+
+export interface ServiceResponse {
+  status: string;
+  data: OrderProductData;
 }
 
 const getAll = async (): Promise<OrderData[]> => {
@@ -21,4 +31,17 @@ const getAll = async (): Promise<OrderData[]> => {
   return ordersMapped;
 };
 
-export default { getAll };
+const createOrder = async (order: OrderProductData): Promise<ServiceResponse> => {
+  const { userId, productIds } = order;
+  productIds.forEach(async (product: number) => {
+    const createOrders = await OrderModel.create({ userId });
+    const { id } = createOrders.dataValues;
+    await ProductModel.update({ orderId: id }, { where: { id: product } });
+  });
+  return {
+    status: 'SUCESSO',
+    data: order,
+  };
+};
+
+export default { getAll, createOrder };
