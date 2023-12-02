@@ -16,7 +16,6 @@ const login = async (username: string, password: string): Promise<LoginType> => 
     return { status: 'BAD_REQUEST', message: error.message };
   }
   const userDb = await UserModel.findOne({ where: { username } });
-  console.log(userDb);
 
   if (!userDb || !bcrypt.compareSync(password, userDb.dataValues.password)) {
     return { status: 'INVALID_FIELDS', message: 'Username or password invalid' };

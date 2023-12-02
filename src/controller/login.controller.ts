@@ -14,3 +14,5 @@ const login = async (req: Request, res: Response): Promise<Response | unknown> =
 };
 
 export default { login };
+
+// FUNÇÃO LOGIN TESTADA UNITARIAMENTE
