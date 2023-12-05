@@ -10,4 +10,6 @@ const responseOrders = {
   "userId": 1
 };
 
-export { requestOrders, responseOrders }
+const RequestOrdersGetAll = [ { dataValues: { id: 1, userId: 1, productIds: [2, 1] } } ];
+
+export { requestOrders, responseOrders, RequestOrdersGetAll }

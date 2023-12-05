@@ -21,7 +21,6 @@ const getAll = async (): Promise<OrderData[] | unknown> => {
   const orders = await OrderModel.findAll({
     include: [{ model: ProductModel, as: 'productIds', attributes: ['id'] }],
   });
-
   const ordersMapped = orders.map(({ dataValues }) => ({
     id: Number(dataValues.id),
     userId: Number(dataValues.userId),
@@ -35,6 +34,7 @@ const createOrder = async (order: OrderProductData): Promise<ServiceResponse | u
   const { userId, productIds } = order;
   productIds.forEach(async (product: number) => {
     const createOrders = await OrderModel.create({ userId });
+    console.log('createOrders', createOrders);
     const { id } = createOrders.dataValues;
     await ProductModel.update({ orderId: id }, { where: { id: product } });
   });

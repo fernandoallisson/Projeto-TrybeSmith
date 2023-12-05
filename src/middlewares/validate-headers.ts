@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { verifyToken } from '../utils/create-token';
+import TOKEN from '../utils/create-token';
 
 const validateHeaders = async (req: Request, res: Response, next: NextFunction) => {
   const { authorization } = req.headers;
@@ -8,7 +8,7 @@ const validateHeaders = async (req: Request, res: Response, next: NextFunction) 
     return res.status(401).json({ message: 'Token not found' });
   }
   const token = authorization.split('Bearer ')[1];
-  const validate = verifyToken(token);
+  const validate = TOKEN.verifyToken(token);
   if (validate.error) {
     return res.status(401).json({ message: 'Invalid token' });
   }
