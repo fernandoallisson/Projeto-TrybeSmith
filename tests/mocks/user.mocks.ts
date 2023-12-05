@@ -35,24 +35,24 @@ const userBodyResponseError3 = {
         vocation: 'Guerreiro',
         level: 10,
         password: '$2a$10$Oo/9JaIf7vwnG61BS20f4Oe0wKwEBf7v0.BP95H9z/1ZAHHMGdCQa'
-      },
-      _previousDataValues: {
+    },
+    _previousDataValues: {
         id: 1,
         username: 'Hagar',
         vocation: 'Guerreiro',
         level: 10,
         password: '$2a$10$Oo/9JaIf7vwnG61BS20f4Oe0wKwEBf7v0.BP95H9z/1ZAHHMGdCQa'
-      },
-      uniqno: 1,
-      _options: {
+    },
+    uniqno: 1,
+    _options: {
         isNewRecord: false,
         _schema: null,
         _schemaDelimiter: '',
         raw: true,
-        attributes: [ 'id', 'username', 'vocation', 'level', 'password' ]
-      },
-      isNewRecord: false
-    };
+        attributes: ['id', 'username', 'vocation', 'level', 'password']
+    },
+    isNewRecord: false
+};
 
 
 export {

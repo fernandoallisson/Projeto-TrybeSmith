@@ -1,29 +1,55 @@
-const products = [
-  {
-    id: 1,
-    name: 'Product 1',
-    price: 100,
-  },
-  {
-    id: 2,
-    name: 'Product 2',
-    price: 200,
-  },
-  {
-    id: 3,
-    name: 'Product 3',
-    price: 300,
-  },
-  {
-    id: 4,
-    name: 'Product 4',
-    price: 400,
-  },
-  {
-    id: 5,
-    name: 'Product 5',
-    price: 500,
-  }
-];
+import { Request } from "express";
 
-export default products;
+const productsResponseGetAll = [
+  {
+    "id": 1,
+    "name": "Excalibur",
+    "price": "10 peças de ouro",
+    "orderId": 1
+  },
+  {
+    "id": 2,
+    "name": "Espada Justiceira",
+    "price": "20 peças de ouro",
+    "orderId": 1
+  },
+  {
+    "id": 3,
+    "name": "Lira de Orfeu",
+    "price": "1 peça de ouro",
+    "orderId": 2
+  },
+  {
+    "id": 4,
+    "name": "Armadura de Aquiles",
+    "price": "1 peça de ouro",
+    "orderId": 2
+  },
+  {
+    "id": 5,
+    "name": "Harpa de Dagda",
+    "price": "15 peças de ouro",
+    "orderId": 3
+  },
+  {
+    "id": 6,
+    "name": "fernando",
+    "price": "30 peças de ouro",
+    "orderId": 4
+  },
+];
+const productsPostRequest = {
+  body: {
+  "name": "fernandinhooooo",
+  "price": "30 peças de ouro",
+  "orderId": 4
+  }
+} as Request;
+const productsPostResponse = {
+  "id": 8,
+  "name": "fernandinhooooo",
+  "orderId": 4,
+  "price": "30 peças de ouro"
+};
+
+export { productsResponseGetAll, productsPostRequest, productsPostResponse };

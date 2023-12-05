@@ -2,7 +2,7 @@ import { Product } from '../types/Product';
 
 import ProductModel, { ProductSequelizeModel } from '../database/models/product.model';
 
-const create = async (product: Omit<Product, 'id'>): Promise<ProductSequelizeModel | undefined> => {
+const create = async (product: Omit<Product, 'id'>): Promise<ProductSequelizeModel | unknown> => {
   const { name, orderId, price } = product;
   const newProduct = await ProductModel.create({ name, orderId, price });
   if (!newProduct) {
@@ -12,7 +12,7 @@ const create = async (product: Omit<Product, 'id'>): Promise<ProductSequelizeMod
   return newProduct;
 };
 
-const getAll = async (): Promise<ProductSequelizeModel[]> => {
+const getAll = async (): Promise<ProductSequelizeModel[] | unknown> => {
   const products = await ProductModel.findAll();
   if (!products) {
     throw new Error('Error getting products');
