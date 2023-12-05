@@ -29,4 +29,4 @@ const verifyToken = (token: string): VerifyTokenReturn => {
   }
 };
 
-export { createToken, verifyToken };
+export default { createToken, verifyToken };
