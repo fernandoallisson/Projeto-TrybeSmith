@@ -13,3 +13,5 @@ const getAllProducts = async (_req: Request, res: Response): Promise<Response | 
 };
 
 export default { createProduct, getAllProducts };
+
+// FUNÇÕES DE CONTROLLERS TESTADAS UNITARIAMENTES

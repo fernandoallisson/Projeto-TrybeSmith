@@ -17,7 +17,7 @@ export interface ServiceResponse {
   data: OrderProductData;
 }
 
-const getAll = async (): Promise<OrderData[]> => {
+const getAll = async (): Promise<OrderData[] | unknown> => {
   const orders = await OrderModel.findAll({
     include: [{ model: ProductModel, as: 'productIds', attributes: ['id'] }],
   });
@@ -31,7 +31,7 @@ const getAll = async (): Promise<OrderData[]> => {
   return ordersMapped;
 };
 
-const createOrder = async (order: OrderProductData): Promise<ServiceResponse> => {
+const createOrder = async (order: OrderProductData): Promise<ServiceResponse | unknown> => {
   const { userId, productIds } = order;
   productIds.forEach(async (product: number) => {
     const createOrders = await OrderModel.create({ userId });
