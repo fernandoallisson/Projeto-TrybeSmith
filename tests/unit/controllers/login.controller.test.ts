@@ -7,7 +7,6 @@ import loginService from '../../../src/services/login.service';
 import {
   token,
   userBodyRequest, 
-  userBodyResponse,
   userBodyRequestError,
   userBodyResponseError, 
   userBodyResponseError2} from '../../mocks/user.mocks';

@@ -2,7 +2,7 @@ import chai, { expect } from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import { Request, Response } from 'express';
-import { requestOrders, responseOrders } from '../../mocks/orders.mocks';
+import { responseOrders } from '../../mocks/orders.mocks';
 import orderService from '../../../src/services/orders.service';
 import orderController from '../../../src/controller/order.controller';
 chai.use(sinonChai);

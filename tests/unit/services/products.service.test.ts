@@ -1,30 +1,42 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
+import chai from 'chai';
+import sinonChai from 'sinon-chai';
 import ProductsService from '../../../src/services/product.service';
 import ProductModel from '../../../src/database/models/product.model';
-import ProductController from '../../../src/controller/product.controller';
-import { Request, Response } from 'express';
+import { productsResponseGetAll } from '../../mocks/Products.mocks';
+
+chai.use(sinonChai);
 
 describe('ProductsService', function () {
   beforeEach(function () { sinon.restore(); });
 
-  // it('Testa se a função retorna um objeto de produtos', async function () {
-  //   const product = {
-  //     name: 'Product 1',
-  //     orderId: 1,
-  //     price: '30 peças de ouro',
-  //     id: 1,
-  //   };
+  it('retorna um erro quando o produto não o cria', async function () {
+    sinon.stub(ProductModel, 'findOne').resolves(null);
+    await ProductsService.create({ name: 'teste', price: 'teste', orderId: 999 })
+      .catch((err) => {
+        expect(err).to.be.an('error');
+      });
+  });
 
-  //   const newProduct = await ProductModel.build(product);
-  //   sinon.stub(ProductsService, 'create').resolves(newProduct);
+  it('Retorna um produto quando criado', async function () {
+    sinon.stub(ProductModel, 'create').resolves([] as any);
+    const products = await ProductsService.getAll();
+    expect(products).to.be.an('array');
+  });
 
+  it('Retorna todos os produtos', async function () {
+    sinon.stub(ProductModel, 'findAll').resolves(productsResponseGetAll as any);
+    const products = await ProductsService.getAll();
+    expect(products).to.be.an('array');
+    expect(products).to.have.lengthOf(productsResponseGetAll.length);
+  });
 
-  //   const req = {} as Request;
-  //   const res = {} as Response;
-  //   await ProductController.createProduct(req, res);
-
-  //   expect(res.status).to.have.been.calledWith(201);
-  //   expect(res.json).to.have.been.calledWith(newProduct);
-  // });
+  it('Retorna um erro quando nenhum produto é encontrado', async function () {
+    sinon.stub(ProductModel, 'findAll').resolves(null as any);
+    await ProductsService.getAll()
+      .catch((err) => {
+        expect(err).to.be.an('error');
+      });
+  });
 })

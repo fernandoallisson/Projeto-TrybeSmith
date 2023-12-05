@@ -4,7 +4,7 @@ import chai from 'chai';
 import sinonChai from 'sinon-chai';
 import OrdersService from '../../../src/services/orders.service';
 import OrderModel from '../../../src/database/models/order.model';
-import { RequestOrdersGetAll, responseOrders } from '../../mocks/orders.mocks';
+import { responseOrders } from '../../mocks/orders.mocks';
 import ProductModel from '../../../src/database/models/product.model';
 
 chai.use(sinonChai);
