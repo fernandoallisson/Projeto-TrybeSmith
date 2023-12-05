@@ -16,7 +16,7 @@ describe('ProductsController', function () {
     sinon.restore();
   });
 
-  it.only('testa se a função retorna um ststus 201 e um json com o novo produto', async function () {
+  it('testa se a função retorna um status 201 e um json com o novo produto', async function () {
  
   });
 });
